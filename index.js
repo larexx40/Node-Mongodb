@@ -1,11 +1,11 @@
 const { MongoClient } = require("mongodb")
 const assert = require('assert')
+const dbOperation = require('./operations')
 
 const url = 'mongodb://127.0.0.1:27017'
 const dbname = 'confusion'
 
-MongoClient.connect(url, (err, client)=>{
-    assert.equal(err, null)
+MongoClient.connect(url).then((client)=>{
     console.log('connected to server correctly')
     const db = client.db(dbname)
     const collection = db.collection('dishes');
